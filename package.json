@@ -4,7 +4,10 @@
   "description": "boilerplate for swarmlog-connected frontend apps",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run init-keys; npm run serve-dev",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "init-keys": "node -pe \"JSON.stringify(require('ssb-keys').generate())\" > keys.json",
+    "serve-dev": "wzrd index.js:bundle.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +23,21 @@
   "bugs": {
     "url": "https://github.com/du5t/hyperplate/issues"
   },
-  "homepage": "https://github.com/du5t/hyperplate#readme"
+  "homepage": "https://github.com/du5t/hyperplate#readme",
+  "dependencies": {
+    "chloride": "^2.0.1",
+    "hyperkv": "^1.4.0",
+    "level-browserify": "^1.1.0",
+    "main-loop": "^3.2.0",
+    "memdb": "^1.3.1",
+    "mkdirp": "^0.5.1",
+    "sodium": "^1.0.22",
+    "ssb-keys": "^4.0.10",
+    "swarmlog": "^1.1.0",
+    "virtual-dom": "^2.1.1",
+    "xdg-basedir": "^2.0.0"
+  },
+  "devDependencies": {
+    "wzrd": "^1.3.1"
+  }
 }
