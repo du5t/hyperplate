@@ -14,7 +14,7 @@ decentralization. this is that place.
 ### run it
 
 - `npm start`
-- `npm run serve-dev` if you 
+- `npm run serve-dev` if you want to persist keys
 
 ### bits
 
