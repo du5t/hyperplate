@@ -11,6 +11,11 @@ everything, in code form. let's all be **hyper** minimalist hackertrons!
 no but seriously, i needed to find a calm place with web frontend technology and
 decentralization. this is that place.
 
+### run it
+
+- `npm start`
+- `npm run serve-dev` if you 
+
 ### bits
 
 - UI
@@ -34,4 +39,5 @@ i'm not planning on adding a router, but if you need a minimal one,
 - [ ] stub out some controls
  - [ ] input+put
  - [ ] click to get
+- [ ] add simple styling
 - [ ] document app lifecycle from dev to ship (w/ hyperboot)
