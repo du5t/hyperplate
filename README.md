@@ -5,8 +5,9 @@ boilerplate for swarmlog-connected webapps
 ## what
 
 basically just a cobbled-together mush of
-[substack](https://github.com/substack)'s views on life, the internet, and
-everything, in code form. let's all be **hyper** minimalist hackertrons!
+[substack](https://github.com/substack)'s views (as received) on life, the
+internet, and everything, in code form. let's all be **hyper**minimalist
+hackertrons!
 
 no but seriously, i needed to find a calm place with web frontend technology and
 decentralization. this is that place.
@@ -23,10 +24,11 @@ decentralization. this is that place.
   - virtual-dom
   - hyperscript
 - Data
+  - level-browserify
+  - subleveldown
   - hyperkv
   - swarmlog
-  - memdb (for testing)
-  - level-browserify
+  - memdb
 - Crypto
   - chloride (NaCl for browser)
 
@@ -35,9 +37,10 @@ i'm not planning on adding a router, but if you need a minimal one,
 
 ## TODO
 
-- [ ] hook up hyperkv
-- [ ] stub out some controls
+- [x] hook up hyperkv
+- [-] stub controls
  - [ ] input+put
- - [ ] click to get
-- [ ] add simple styling
-- [ ] document app lifecycle from dev to ship (w/ hyperboot)
+ - [x] click to get
+- [ ] add stream multiplexing (multiplexing!) w/ dataplex
+- [ ] add simple gss styling
+- [ ] document app lifecycle from construction to (space)ship w/ hyperboot
