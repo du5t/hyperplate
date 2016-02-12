@@ -5,15 +5,11 @@ var main = require('main-loop')
 var loop = main({ msg: "nothing yet" }, render, vdom)
 document.querySelector('#content').appendChild(loop.target)
 
-
-function render (state) {
+function render(state) {
   return h('div', [
-    h('h1', 'data from swarmlog: ' + state.msg || "no messages")
- //   h('button', { onclick: onclick }, 'get data!')
+    h('h1', 'data from swarmlog: ' + state.msg || "no messages"),
+    h('button', { onclick: allowUpdate }, 'pull data stream!')
   ])
-//   function onclick () {
-//     loop.update({ times: state.times + 1 })
-//   }
 }
 
 var swarmlog = require('swarmlog')
@@ -28,9 +24,14 @@ var log = swarmlog({
   hubs: [ 'http://localhost:8080']
 })
 
-log.createReadStream({ live: true }).on('data', function (data) {
+var logStream = log.createReadStream({ live: true }).on('data', function (data) {
   console.log('RECEIVED', data.value)
   if (data.value.hasOwnProperty('msg')) {
     loop.update({ msg: data.value.msg })
+    this.pause()
   }
 })
+
+function allowUpdate(stream) {
+  logStream.resume();
+}
