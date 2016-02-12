@@ -1,18 +1,29 @@
 var level = require('level-browserify')
 var swarmlog = require('swarmlog')
+var sub = require('subleveldown')
+var db = level('./server-kv.db')
 
 var log = swarmlog({
   keys: require('./keys.json'),
   sodium: require('chloride/browser'),
-  db: level('server-db'),
+  db: sub(db, 'log'),
   valueEncoding: 'json',
 //  hubs: [ 'https://signalhub.mafintosh.com' ],
   hubs: [ 'http://localhost:8080' ]
 })
 
+var hyperkv = require('hyperkv')
+
+var kv = hyperkv({
+  log: log,
+  db: sub(db, 'kv')
+})
+
 var times = 0
+var key = 'msg'
 setInterval(function () {
   console.log('sending data...')
-  log.append({ time: Date.now(), msg: 'HELLO!x' + times })
+  var value = { time: Date.now(), msg: 'HELLO!x' + times }
+  kv.put('msg', value)
   times++
 }, 1000)
