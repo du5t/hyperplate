@@ -6,7 +6,8 @@ var log = swarmlog({
   sodium: require('chloride/browser'),
   db: level('server-db'),
   valueEncoding: 'json',
-  hubs: [ 'https://signalhub.mafintosh.com' ]
+//  hubs: [ 'https://signalhub.mafintosh.com' ],
+  hubs: [ 'http://localhost:8080' ]
 })
 
 var times = 0
