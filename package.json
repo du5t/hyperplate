@@ -4,10 +4,11 @@
   "description": "boilerplate for swarmlog-connected frontend apps",
   "main": "index.js",
   "scripts": {
-    "start": "npm run init-keys; npm run serve-dev",
+    "start": "npm run init-keys; npm run serve-client",
     "test": "echo \"Error: no test specified\" && exit 1",
     "init-keys": "node -pe \"JSON.stringify(require('ssb-keys').generate())\" > keys.json",
-    "serve-dev": "wzrd index.js:bundle.js"
+    "serve-client": "wzrd index.js:bundle.js",
+    "serve-broadcaster": "electron-spawn server.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
   "homepage": "https://github.com/du5t/hyperplate#readme",
   "dependencies": {
     "chloride": "^2.0.1",
+    "electron-spawn": "^3.3.0",
     "hyperkv": "^1.4.0",
     "level-browserify": "^1.1.0",
     "main-loop": "^3.2.0",

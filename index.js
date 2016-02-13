@@ -1,17 +1,3 @@
-var h = require('virtual-dom/h')
-var vdom = require('virtual-dom')
-
-var main = require('main-loop')
-var loop = main({ msg: "nothing yet" }, render, vdom)
-document.querySelector('#content').appendChild(loop.target)
-
-function render(state) {
-  return h('div', [
-    h('h1', 'data from swarmlog: ' + state.msg || "no messages"),
-    h('button', { onclick: allowUpdate }, 'pull data stream!')
-  ])
-}
-
 var swarmlog = require('swarmlog')
 var memdb = require('memdb')
 
@@ -35,22 +21,49 @@ var kv = hyperkv({
 })
 
 function logValByKey(key) {
-  kv.get(key, function (err, value) {
+  kv.get(key, function (err, values) {
     if (err) console.error(err)
-    else console.log("message retrieved from hyperkv: ", value)
+    else console.log("messages retrieved from hyperkv: ", values)
   })
 }
 
-
-var logStream = log.createReadStream({ live: true }).on('data', function (data) {
-  console.log('RECEIVED', data.value.v)
-  if (data.value.v.hasOwnProperty('msg')) {
-    loop.update({ msg: data.value.v.msg })
-    logValByKey(data.value.k)
-    this.pause()
+kv.on('update', function (key, value, node) {
+  console.log('RECEIVED', value)
+  if (value.hasOwnProperty('msg')) {
+    loop.update({ msg: value.msg })
+    logValByKey(key)
   }
 })
 
 function allowUpdate(stream) {
   logStream.resume()
+}
+
+var h = require('virtual-dom/h')
+var vdom = require('virtual-dom')
+
+var main = require('main-loop')
+var loop = main({ msg: "nothing yet" }, render, vdom)
+document.querySelector('#content').appendChild(loop.target)
+
+function render(state) {
+  return h('div', [
+    h('h1', 'data from swarmlog: ' + state.msg || "no messages"),
+    h('input', { onkeypress: putText, value: 'enter text here and tap enter' })
+  ])
+}
+
+function putText(e) {
+  var charCode = e.which || event.keyCode
+
+  if ( charCode == '13' ) {
+    // Enter pressed
+    kv.put('reply', { msg: e.target.value }, function (err, node) {
+      if (err) console.error(err)
+      else {
+        console.log("Submitting data...")
+        console.log(node)
+      }
+    })
+  }
 }

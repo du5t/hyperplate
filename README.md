@@ -14,8 +14,9 @@ decentralization. this is that place.
 
 ### run it
 
-- `npm start`
-- `npm run serve-dev` if you want to persist keys
+1. `npm start`
+2. start another terminal sesh
+3. `npm run serve-broadcaster`
 
 ### bits
 
@@ -38,9 +39,8 @@ i'm not planning on adding a router, but if you need a minimal one,
 ## TODO
 
 - [x] hook up hyperkv
-- [-] stub controls
- - [ ] input+put
- - [x] click to get
+- [x] stub controls
+ - [x] input+put
 - [ ] add stream multiplexing (multiplexing!) w/ dataplex
 - [ ] add simple gss styling
 - [ ] document app lifecycle from construction to (space)ship w/ hyperboot
