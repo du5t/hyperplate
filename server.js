@@ -1,7 +1,7 @@
 var level = require('level-browserify')
 var swarmlog = require('swarmlog')
 var sub = require('subleveldown')
-var db = level('./server-kv.db')
+var db = require('memdb')() // replace with level for persistence
 
 var log = swarmlog({
   keys: require('./keys.json'),
@@ -20,7 +20,6 @@ var kv = hyperkv({
 })
 
 var times = 0
-var key = 'msg'
 setInterval(function () {
   console.log('sending data...')
   var value = { time: Date.now(), msg: 'HELLO!x' + times }

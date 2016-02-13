@@ -14,6 +14,9 @@ decentralization. this is that place.
 
 ### run it
 
+2. `npm install -g signalhub`
+3. `signalhub listen -p 8080`
+4. start another terminal sesh
 1. `npm start`
 2. start another terminal sesh
 3. `npm run serve-broadcaster`
