@@ -27,6 +27,7 @@ decentralization. this is that place.
   - main-loop
   - virtual-dom
   - hyperscript
+  - GSS constraint-based styling
 - Data
   - level-browserify
   - subleveldown
@@ -45,5 +46,5 @@ i'm not planning on adding a router, but if you need a minimal one,
 - [x] stub controls
  - [x] input+put
 - [ ] add stream multiplexing (multiplexing!) w/ dataplex
-- [ ] add simple gss styling
+- [x] add simple gss styling
 - [ ] document app lifecycle from construction to (space)ship w/ hyperboot
