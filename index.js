@@ -56,15 +56,15 @@ var vdom = require('virtual-dom')
 
 var main = require('main-loop') // iconoclastic paleo reactive updates
 var loop = main({ msg: "nothing yet" }, render, vdom)
-document.querySelector('#content').appendChild(loop.target)
+document.querySelector('#container').appendChild(loop.target)
 
 function render(state) {
-  return h('div', [
-    h('h1', 'data from swarmlog: ' + state.msg || "no messages"),
-    h('input', { onkeypress: putText,
-                 value: 'enter text here and tap enter',
-                 style: { width: "100%" }
-               })
+  return h('div#app', [
+    h('div#swarm-pane', [
+      h('h1#status', 'data from swarmlog: ' + state.msg || "no messages"),
+      h('input#submitter', { onkeypress: putText,
+                             value: 'enter text here and tap enter'
+                           })])    
   ])
 }
 
