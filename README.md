@@ -84,4 +84,3 @@ i'm not planning on adding a router, but if you need a minimal one,
 - [ ] add stream multiplexing (multiplexing!) w/ dataplex
 - [x] add simple gss styling
 - [x] build hyperbooted version
-- [ ] document app lifecycle from construction to (space)ship w/ hyperboot
