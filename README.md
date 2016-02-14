@@ -23,12 +23,18 @@ decentralization. this is that place.
 2. start another terminal sesh
 3. `npm run serve-broadcaster`
 
+this gets you to a couple of swarmlog peers, one of which pushes data once per
+second and runs in a headless electron session. the other one runs in your
+browser and reactively updates with new data from the swarmlog, including data
+you input through a text box.
+
 #### shipping with hyperboot
 
 checkout the "bootable" branch to see how it
 works. [substack](https://www.github.com/substack/) is changing hyperboot pretty
 quickly, but you can ship a bundled webapp with the current version like so:
 
+4. `npm install -g hyperboot`
 1. `cd src`
 2. `browserify -d index.js > bundle.js`
 3. bump the `<meta>` version tag in index.html

@@ -37,6 +37,7 @@
     "virtual-dom": "^2.1.1"
   },
   "devDependencies": {
+    "html-inline": "^1.2.0",
     "wzrd": "^1.3.1"
   }
 }
