@@ -1,4 +1,0 @@
-#swarm-pane[center-x] <= ::window[center-x] / 1.25;
-#swarm-pane[width] <= ::window[width] / 1.5;
-
-#submitter[width] == #swarm-pane[width];
